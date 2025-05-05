@@ -8,11 +8,11 @@ WORKDIR /usr/share/nginx/html
 COPY . .
 
 # Copy custom Nginx config for SSL
-COPY Route53_CustomDomain/default.conf /etc/nginx/conf.d/default.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
 
 # Copy SSL certificates
-COPY Route53_CustomDomain/fullchain.pem /etc/ssl/certs/fullchain.pem
-COPY Route53_CustomDomain/eyeseeu_tld.key /etc/ssl/private/eyeseeu_tld.key
+COPY fullchain.pem /etc/ssl/certs/fullchain.pem
+COPY eyeseeu_tld.key /etc/ssl/private/eyeseeu_tld.key
 
 # Expose HTTP (80) and HTTPS (443) ports
 EXPOSE 80
