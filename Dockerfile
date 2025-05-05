@@ -23,4 +23,4 @@ EXPOSE 443
 
 
 # docker build -t my-static-site .
-# docker run -d -p 443:443 80:80 my-static-site
+# docker run -d -p 443:443 -p 80:80 my-static-site
