@@ -4,13 +4,22 @@ FROM nginx:alpine
 # Set working directory
 WORKDIR /usr/share/nginx/html
 
-# Copy all website files into the Nginx public folder
+# Copy website files into the Nginx public folder
 COPY . .
 
-# Expose port 80 for the web server
+# Copy custom Nginx config for SSL
+COPY Route53_CustomDomain/default.conf /etc/nginx/conf.d/default.conf
+
+# Copy SSL certificates
+COPY Route53_CustomDomain/fullchain.pem /etc/ssl/certs/fullchain.pem
+COPY Route53_CustomDomain/eyeseeu_tld.key /etc/ssl/private/eyeseeu_tld.key
+
+# Expose HTTP (80) and HTTPS (443) ports
 EXPOSE 80
+EXPOSE 443
 
 # No CMD needed, Nginx runs by default
+
 
 
 # docker build -t my-static-site .
